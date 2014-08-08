@@ -59,9 +59,9 @@ $mail->Body =
 	"意気込み      ：{$posted['enthusiasm']}\n".
 	"\nこの度は弊社インターンシップにエントリーしていただき\n".
 	"誠にありがとうございます。\n".
-	"後ほどご登録いただいたご連絡先に、\n".
+	"後ほどご登録いただいたご連絡先に\n".
 	"次回選考のご案内をいたしますので、\n".
-	"今しばらくお待ちください。 \n".
+	"今しばらくお待ちくださいませ。 \n".
 	"\n※このメールはインターンシップのエントリー受付後、自動送信されております．\n".
 	"返信には対応しておりませんので、ご注意くださいませ。\n".
 	"\n============================================================\n".
@@ -83,7 +83,7 @@ if (! $mail->send()) {
 	$logger->error($mail->ErrorInfo);
 }
 
-// to bellpark
+// to givery
 $mail->clearAllRecipients();
 foreach (Mailconfig::$to as $address => $name) {
 	$mail->addAddress($address, $name);
@@ -123,7 +123,7 @@ if (! $mail->send()) {
 	$logger->fatal($mail->Body);
 	Session::write('failed.register', "登録処理中にエラーが発生しました。<br/>お手数ですが、登録内容をご確認の上再度ご登録をお願いします。");
 	// $dbconn->rollback(); //DB rollback
-	return header('Location: index.php#entry');
+	return header('Location: index.php#section-entry');
 }
 
 // $dbconn->commit(); //DB commit

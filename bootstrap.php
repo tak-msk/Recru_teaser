@@ -29,3 +29,20 @@ $role = array(
     'DESIGNER' => 'Designer',
 );
 
+Logger::configure(array(
+    'rootLogger' => array(
+        'appenders' => array('default'),
+    ),
+    'appenders' => array(
+        'default' => array(
+            'class' => 'LoggerAppenderFile',
+            'layout' => array(
+                'class' => 'LoggerLayoutSimple'
+            ),
+            'params' => array(
+                'file' => APPPATH .'log/internship.log',
+                'append' => true,
+            ),
+        ),
+    ),
+));

@@ -55,6 +55,8 @@ foreach ($posted as $key => $val) {
 	</div>
 </div>
 
+<div class="wrapper">
+
 <!-- CONTENT -->	
 
 <div class="main section-padding">
@@ -126,9 +128,10 @@ foreach ($posted as $key => $val) {
 	</div>
 </div>
 
-
 <footer id="footer" class="reset">
-	<small>&copy; Givery Technology, 2014</small>
+	<small>&copy; givery Technology, 2014</small>
 </footer>
+</div>
+
 </body>
 </html>

@@ -25,6 +25,7 @@ if (! is_array($posted)) $posted = array($posted);
 
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/js_custom.js"></script>
+  <script src="js/super.js"></script>
 
   <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -50,6 +51,8 @@ if (! is_array($posted)) $posted = array($posted);
 
 	</div>
 </div>
+
+<div class="wrapper">
 
 <!-- HEADER -->
 <div id="section-header" class="section-padding">
@@ -98,9 +101,9 @@ if (! is_array($posted)) $posted = array($posted);
 				</table>
 				<br />
 				<div class="social-buttons">
-					
-					facebook<br />
-					twitter
+				   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://givery.co.jp/internship" data-text="test!!!!!!!!!" data-lang="ja" data-hashtags="TECHα">ツイート</a>
+				   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				   <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fgivery.co.jp%2Finternship&amp;width=100&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=459731424044300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 				</div>
 			
 			</div>
@@ -402,7 +405,7 @@ if (! is_array($posted)) $posted = array($posted);
 		
 		
 			<div class="col-md-6">
-			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
+			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)" wrap="hard"></textarea>
 			</div>
 		</div>
 		
@@ -411,17 +414,17 @@ if (! is_array($posted)) $posted = array($posted);
 			<br />
 			<br />
 			株式会社ギブリーの個人情報保護基本方針については<br />
-			<a href="#">「株式会社ギブリーの個人情報に関する取扱いについて」</a>をご参照ください。
+			<a href="privacy_policy.php">「株式会社ギブリーの個人情報に関する取扱いについて」</a>をご参照ください。
 			<br />
 			<br />
-			<input type="checkbox" name="privacy" value="同意する">  個人情報に関する取扱いについて同意する
+			<input type="checkbox" id="checkme" name="privacy" value="同意する">  個人情報に関する取扱いについて同意する
 			<br />
 			<br />
 			</p>
 		</div>
 		
 		<div class="row">
-			<input type="submit" value="Submit" class="button-primary submit_button"></input>
+			<input type="submit" id="submit_form" value="Submit" class="submit_button" disabled ></input>
 		</div>
 		<br/>
 	</form>
@@ -432,6 +435,8 @@ if (! is_array($posted)) $posted = array($posted);
 <footer id="footer" class="reset">
 	<small>&copy; givery Technology, 2014</small>
 </footer>
+
+</div>
 
 </body>
 </html>

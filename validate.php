@@ -12,7 +12,15 @@ function is_valid_phone ($phone)
     $phonelen = mb_strlen($phone, 'UTF-8');
     return $phonelen === 10 or $phonelen === 11;
 }
-//
+
+// simple enthusiasm validation method
+function is_valid_enthusiasm ($enthusiasm)
+{
+    // max is 400 chars
+    $charlen = mb_strlen($enthusiasm, 'UTF-8');
+    return $charlen <= 400;
+}
+
 // convert Zenkaku to Hankaku
 $phone = mb_convert_kana(Arr::get($_POST, 'phone'), 'a', 'UTF-8');
 $phone = preg_replace('/\D/', '', $phone);
@@ -47,8 +55,14 @@ if ((! isset($failed['phone'])) and (! is_valid_phone($phone))) {
     $failed['phone'] = '電話番号として不正な値です。もう一度ご確認ください';
 }
 
+// email too
 if ((! isset($failed['mail'])) and (! is_valid_email($mail))) {
     $failed['mail'] = 'メールの形式に誤りがあるか、既に登録されています';
+}
+
+// # of characters on an enthusiam is 400
+if (! is_valid_enthusiasm(Arr::get($_POST,'enthusiasm'))){
+    $failed['enthusiasm'] = '400字以内で提出してください。';
 }
 
 /** メールの重複チェック. DB登録がある場合はコメントアウトして下さい.

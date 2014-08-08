@@ -26,3 +26,15 @@ $(function () {
 	});
 });
 
+// Enable Submit button when the checkbox is checked
+$(function () {
+  $('#checkme').click(function () {
+    
+    //check if checkbox is checked
+    if ($(this).is(':checked')) {
+      $('#submit_form').removeAttr('disabled'); //enable input
+    } else {
+      $('#submit_form').attr('disabled', true); //disable input
+    }
+  });
+});
