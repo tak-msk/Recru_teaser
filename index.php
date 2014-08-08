@@ -1,25 +1,31 @@
+<?php
+require_once 'bootstrap.php';
+$posted = Session::read('posted');
+$failed = Session::read('failed');
+if (! is_array($posted)) $posted = array($posted);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>鉄火-TECH&alpha;- | givery Technolody</title>
+  <meta name="description" content="最高峰のハッカソンに挑むサマーインターンシップ。話題の'iBeacon'を使用して、日本の就活文化に革新を起こすWebサービス・アプリを開発せよ">
+  <meta name="keywords" content="internship,ハッカソン,hackathon,givery,ギブリー,iBeacon,インターンシップ">
   <meta name="viewport" content="width=1060">
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta property="fb:admins" content="">
-  <meta property="og:site_name" content="">
+  <meta property="fb:admins" content="500020666728664">
+  <meta property="og:site_name" content="givery Technology Summer Internship">
   <meta property="og:type" content="article">
   <meta property="og:image" content="">
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
+  <meta property="og:title" content="鉄火-TECH&alpha;- | givery Technology">
+  <meta property="og:description" content="最高峰のハッカソンに挑むサマーインターンシップ。日本の就活文化に革新を起こせ！">
   <meta property="og:url" content="">
 
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/js_custom.js"></script>
-  
+
   <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
@@ -339,41 +345,48 @@
 	<div class="container">
 	<h1>ENTRY</h1>
 	<form action="validate.php" method="post">
+		<p class="alert">
+			<?php foreach($failed as $errmsg): ?>
+			・<?php echo $errmsg; ?><br>
+			<?php endforeach; ?>
+		</p>
 		<div class="row">
 			<div class="col-md-6">
 				<p>
-					<input type="text" name="name" value="" placeholder="氏名(Name)" id="name">
+				  <input type="text" name="name" value="<?php echo __(Arr::get($posted, 'name')); ?>" placeholder="氏名(Name)" id="name">
 				</p>
 				<p>
-					<input type="text" name="university" value="" placeholder="大学名(University)" id="university">
+				<input type="text" name="university" value="<?php echo __(Arr::get($posted, 'university')); ?>" placeholder="大学名(University)" id="university">
 				</p>
 				<p>
-					<input type="text" name="faculty" value="" placeholder="学部、学科(Major)" id="faculty">
+				<input type="text" name="faculty" value="<?php echo __(Arr::get($posted, 'faculty')); ?>" placeholder="学部、学科(Faculty)" id="faculty">
 				</p>
 				<p>
+				<?php $selected = (int)Arr::get($posted, 'graduating'); ?>
 				<select class="dropdown" name="graduating">
-					<option value="0" default>卒業予定年度(Graduate in)</option>
-					<option value="2016" >2016</option>
-					<option value="2017" >2017</option>
-					<option value="2018" >2018</option>
-					<option value="1" >既卒</option>
+				    <option value="0" disabled <?php echo ($selected === 0)? "selected": null; ?>>卒業予定年度(Graduate in)</option>
+				    <option value="2016" <?php echo ($selected === 2016)? "selected": null; ?>>2016</option>
+				    <option value="2017" <?php echo ($selected === 2017)? "selected": null; ?>>2017</option>
+				    <option value="2018" <?php echo ($selected === 2018)? "selected": null; ?>>2018</option>
+				    <option value="1" <?php echo ($selected === 1)? "selected": null; ?>>既卒</option>
 				</select>
 				</p>
 				<p>
-					<input type="text" name="phone" value="" placeholder="電話番号(Phone #)" id="tel">
+				    <input type="text" name="phone" value="<?php echo __(Arr::get($posted, 'phone')); ?>" placeholder="電話番号(Phone #)" id="tel">
 				</p>
 				<p>
-					<input type="text" name="mail" value="" placeholder="メールアドレス(Email address)" id="mail">
-					</p>
-				<p class="btn-group switch">
-					<button type="button" class="btn btn-default">Hacker</button>
-					<button type="button" class="btn btn-default">Hustler</button>
-					<button type="button" class="btn btn-default">Hipster</button>
+				    <input type="text" name="mail" value="<?php echo __(Arr::get($posted, 'mail')); ?>" placeholder="メールアドレス(Email address)" id="mail">
 				</p>
+				<?php $chose = Arr::get($posted, 'role')?>
 				<p class="btn-group switch">
-					<button type="button" class="btn btn-default">男性(Male)</button>
-					<button type="button" class="btn btn-default">女性(Female)</button>
-					
+				   <button type="button" class="btn btn-default" name="role" value="HACKER" <?php echo ($chose === 'HACKER')? "chose": null; ?>>Hacker</button>
+				   <button type="button" class="btn btn-default" name="role" value="DIRECTOR" <?php echo ($chose === 'DIRECTOR')? "chose": null; ?>>Director</button>
+				   <button type="button" class="btn btn-default" name="role" value="DESIGNER" <?php echo ($chose === 'DESIGNER')? "chose": null; ?>>Designer</button>
+				</p>
+				<?php $checked = Arr::get($posted, 'sex')?>
+				<p class="btn-group switch">
+				   <button type="button" class="btn btn-default" name="sex" value="MALE" <?php echo ($checked === 'MALE')? "checked": null; ?>>男性(Male)</button>
+				   <button type="button" class="btn btn-default" name="sex" value="FEMALE" <?php echo ($checked === 'FEMALE')? "checked": null; ?>>女性(Female)</button>	
 				</p>
 				
 				<!---
@@ -386,7 +399,7 @@
 		
 		
 			<div class="col-md-6">
-				<textarea name="myTextBox" cols="70" rows="18" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
+			   <textarea name="enthusiasm" cols="70" rows="18" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
 			</div>
 			
 			
@@ -400,7 +413,7 @@
 			<a href="#">「株式会社ギブリーの個人情報に関する取扱いについて」</a>をご参照ください。
 			<br />
 			<br />
-			<input type="checkbox" name="" value="">  個人情報に関する取扱いについて同意する
+			<input type="checkbox" name="privacy" value="同意する">  個人情報に関する取扱いについて同意する
 			<br />
 			<br />
 			</p>
@@ -417,8 +430,12 @@
 
 
 <footer id="footer" class="reset">
-	<small>&copy; Givery Technology, 2014</small>
+	<small>&copy; givery Technology, 2014</small>
 </footer>
 
 </body>
 </html>
+<?
+Session::delete('posted');
+Session::delete('failed');
+?>
