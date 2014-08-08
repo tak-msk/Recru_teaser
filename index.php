@@ -341,7 +341,7 @@ if (! is_array($posted)) $posted = array($posted);
 </div>
 
 <!-- ENTRY -->	
-<div id="section-entry" class=" section-padding">
+<div id="section-entry" class="section-padding">
 	<div class="container">
 	<h1>ENTRY</h1>
 	<form action="validate.php" method="post">
@@ -401,8 +401,6 @@ if (! is_array($posted)) $posted = array($posted);
 			<div class="col-md-6">
 			   <textarea name="enthusiasm" cols="70" rows="18" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
 			</div>
-			
-			
 		</div>
 		
 		<div class="row">
@@ -420,10 +418,9 @@ if (! is_array($posted)) $posted = array($posted);
 		</div>
 		
 		<div class="row">
-			<a href="#section-entry" class="button-primary">Submit</a>
-			<br />
-			<br />
+			<a href="confirm.php" class="button-primary">Submit</a>
 		</div>
+		<br/>
 	</form>
     </div>
 </div>	  

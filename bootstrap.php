@@ -23,4 +23,10 @@ $graduating = array(
     '1'    => '既卒',
 );
 
+$role = array(
+    'HACKER' => 'Hacker',
+    'DIRECTOR' => 'Director',
+    'DESIGNER' => 'Designer',
+);
+
 ?>
