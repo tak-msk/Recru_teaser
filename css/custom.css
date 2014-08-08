@@ -1,0 +1,344 @@
+body {
+	margin: 0 auto;
+	text-align: center;
+
+	font-size: 16px;
+
+	background: #FFFFFF;
+	min-width: 1080px;
+}
+
+/* override container length */
+.container {
+	min-width: 960px;
+}
+
+
+h1 {
+	font-weight: 700;
+	padding: 0 0 40px 0;
+
+}
+
+.center {
+
+	text-align: center;
+}
+
+.button-primary {
+	margin: 0 auto;
+	
+	position: relative;
+	display: block;
+	
+	width: 200px;
+	line-height: 60px;
+	
+	font-size: 30px;
+	color: #FFFFFF;
+	
+	background: #ed1c24;
+	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.button-primary:hover {
+	color: #FFFFFF;
+	background: #c4161c;
+	text-decoration: none;
+}
+
+
+/* TOPBAR */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.header .logo {
+	float: left;
+	padding: 15px 0 0 0;
+}
+
+.navbar {
+	line-height: 30px;	
+	background: rgba(0,0,0, 0.8);
+}
+
+.nav-links li a {
+	font-size: 12px;
+	color: #a7a9ac;	
+}
+
+
+.nav-links li a:hover {
+
+	color: #FFFFFF;
+	background: none;
+}
+
+
+
+
+
+/* SECTIONS */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.section-padding {
+	margin: 0;
+	padding: 60px 0 60px 0;
+
+}
+
+#section-header {
+	color: #f1f2f2;
+	background: #000000;
+	
+	background: url('../images/dark_mosaic.png');
+	background-repeat: repeat-xy;
+}
+
+#section-about {
+
+	text-align: left;
+	background: #FFFFFF;
+}
+
+
+#section-program {
+	/*background: #58595b;*/
+	background: url('../images/program_bg.png');
+}
+
+#section-info {
+	background: #FFFFFF;
+}
+
+#section-entry {
+	background: #d1d3d4;
+}
+
+
+#footer {
+	background: #000000;
+}
+
+
+/* HEADER */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+#section-header h5 {
+	margin: 0;
+	padding: 2px 0 2px 0;
+}
+
+#section-header h2 {
+	margin: 0;
+	padding: 0;
+}
+
+#section-header p {
+	line-height: 30px;
+	font-size: 16px;
+}
+
+
+#section-header table tbody tr td {
+	
+	text-align: right;
+	padding: 0 4px 0 0;
+}
+
+
+.time {
+	font-size: 24px;
+	font-weight: 100;
+	
+	color: #FFFFFF;
+}
+
+.time-labels {
+
+	font-size: 10px;
+	color: #FFFFFF;
+	
+	opacity: 0.6;
+}
+
+.social-buttons {
+	margin: 0;
+	padding: 0 14px 0 0;
+	
+	text-align: right;
+}
+
+
+/* ABOUT */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+/* PROGRAM */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+#section-program h1 {
+	color: #FFFFFF;
+}
+
+
+.dropdown-arrow {
+	display: block;
+	
+	width: 100px;
+	height: 100px;
+
+	
+	background: #435345;
+}
+
+
+.dropdown-arrow:after {
+	transform:				rotate(90deg);
+	-ms-transform:		rotate(90deg); /* IE 9 */
+	-moz-transform: 		rotate(-90deg);
+	-webkit-transform:	rotate(90deg); /* Opera, Chrome, and Safari */
+
+
+	content: ">";
+}
+
+
+.sub-section-button {
+	width: 100%;
+	height: 80px;
+	
+	font-size: 24px;
+
+	line-height: 80px;
+
+	color: #bcbec0;
+}
+
+
+.sub-section-button:hover {
+	
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+#section-program hr {
+	margin: 0;
+	padding: 0;
+
+	border-color: #808285;
+}
+
+#section-program .desc {
+
+	margin: 0;	
+	padding: 20px 0 40px 0;
+
+	color: #FFFFFF;
+}
+
+#role-table { 
+	text-align: center;
+	padding: 0 0 10px;
+}
+#role-table table {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#role-table td {
+	text-align:left;
+	padding: 0 5px;
+}
+
+
+/* INFORMATION */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+#section-info .arrow-bg {
+	background-image: url('../images/arrow_bg.png');
+	background-repeat: no-repeat;
+}
+
+#section-info img {
+	width: 100px;
+
+}
+
+#section-info .sub-section h4 {
+	color: #808285;
+}
+
+/* Outline ----------------------------------------*/
+#section-info .sub-section {
+	padding: 0 0 80px 0;
+}
+
+#section-info .sub-section h3 {
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	
+	width: 100%;
+	color: #808285;
+	color: #ed1c24;
+	
+	border-bottom: 1px solid #d1d3d4;
+}
+
+#section-info .sub-section table tbody tr td,
+#section-info .sub-section p {
+	text-align: left;
+	border: 0 none;
+}
+
+#section-info .sub-section table tbody tr td:first-child {
+	color: #808285;
+}
+
+
+
+
+
+/* ENTRY */
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+input[type=text] {
+	width: 400px;
+	height: 40px;
+
+}
+
+textarea {
+    resize: none;
+}
+
+
+.dropdown {
+
+	width: 400px;
+	height: 40px;
+}
+
+.switch {
+	width: 400px;	
+
+}
+
+
+
+
+
+
+
+
