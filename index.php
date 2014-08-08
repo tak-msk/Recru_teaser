@@ -345,13 +345,13 @@ if (! is_array($posted)) $posted = array($posted);
 	<div class="container">
 	<h1>ENTRY</h1>
 	<form action="validate.php" method="post">
-		<p class="alert">
+		<p class="alert-form">
 			<?php foreach($failed as $errmsg): ?>
 			・<?php echo $errmsg; ?><br>
 			<?php endforeach; ?>
 		</p>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 align-left">
 				<p>
 				  <input type="text" name="name" value="<?php echo __(Arr::get($posted, 'name')); ?>" placeholder="氏名(Name)" id="name">
 				</p>
@@ -365,6 +365,7 @@ if (! is_array($posted)) $posted = array($posted);
 				<?php $selected = (int)Arr::get($posted, 'graduating'); ?>
 				<select class="dropdown" name="graduating">
 				    <option value="0" disabled <?php echo ($selected === 0)? "selected": null; ?>>卒業予定年度(Graduate in)</option>
+				    <option value="2015" <?php echo ($selected === 2015)? "selected": null; ?>>2015</option>
 				    <option value="2016" <?php echo ($selected === 2016)? "selected": null; ?>>2016</option>
 				    <option value="2017" <?php echo ($selected === 2017)? "selected": null; ?>>2017</option>
 				    <option value="2018" <?php echo ($selected === 2018)? "selected": null; ?>>2018</option>
@@ -377,18 +378,20 @@ if (! is_array($posted)) $posted = array($posted);
 				<p>
 				    <input type="text" name="mail" value="<?php echo __(Arr::get($posted, 'mail')); ?>" placeholder="メールアドレス(Email address)" id="mail">
 				</p>
-				<?php $chose = Arr::get($posted, 'role')?>
-				<p class="btn-group switch">
-				   <button type="button" class="btn btn-default" name="role" value="HACKER" <?php echo ($chose === 'HACKER')? "chose": null; ?>>Hacker</button>
-				   <button type="button" class="btn btn-default" name="role" value="DIRECTOR" <?php echo ($chose === 'DIRECTOR')? "chose": null; ?>>Director</button>
-				   <button type="button" class="btn btn-default" name="role" value="DESIGNER" <?php echo ($chose === 'DESIGNER')? "chose": null; ?>>Designer</button>
-				</p>
-				<?php $checked = Arr::get($posted, 'sex')?>
-				<p class="btn-group switch">
-				   <button type="button" class="btn btn-default" name="sex" value="MALE" <?php echo ($checked === 'MALE')? "checked": null; ?>>男性(Male)</button>
-				   <button type="button" class="btn btn-default" name="sex" value="FEMALE" <?php echo ($checked === 'FEMALE')? "checked": null; ?>>女性(Female)</button>	
-				</p>
 				
+				<?php $chose = Arr::get($posted, 'role');?>
+				<p>
+					<input type="radio" id="role1" name="role" value="HACKER" <?php echo ($chose === 'HACKER')? "chose": null; ?>><label for="role1">Hacker</label>
+					<input type="radio" id="role2" name="role" value="DIRECTOR" <?php echo ($chose === 'DIRECTOR')? "chose": null; ?>><label for="role2">Director</label>
+					<input type="radio" id="role3" name="role" value="DESIGNER" <?php echo ($chose === 'DESIGNER')? "chose": null; ?>><label for="role3">Designer</label>
+				</p>
+
+				<?php $checked = Arr::get($posted, 'sex');?>
+				<p>
+					<input type="radio" id="radio1" name="sex" value="MALE" <?php echo ($checked === 'MALE')? "checked": null; ?>><label for="radio1">男性(Male)</label>
+					<input type="radio" id="radio2" name="sex" value="FEMALE" <?php echo ($checked === 'FEMALE')? "checked": null; ?>><label for="radio2">女性(Female)</label>
+				</p>
+
 				<!---
 				<p class="row">
 					<label class="col btn"><input type="radio" class="switch" name="" value="MALE" >男性</label>
@@ -399,7 +402,7 @@ if (! is_array($posted)) $posted = array($posted);
 		
 		
 			<div class="col-md-6">
-			   <textarea name="enthusiasm" cols="70" rows="18" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
+			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)"></textarea>
 			</div>
 		</div>
 		
@@ -418,7 +421,7 @@ if (! is_array($posted)) $posted = array($posted);
 		</div>
 		
 		<div class="row">
-			<a href="confirm.php" class="button-primary">Submit</a>
+			<input type="submit" value="Submit" class="button-primary submit_button"></input>
 		</div>
 		<br/>
 	</form>
@@ -432,7 +435,7 @@ if (! is_array($posted)) $posted = array($posted);
 
 </body>
 </html>
-<?
+<?php
 Session::delete('posted');
 Session::delete('failed');
 ?>

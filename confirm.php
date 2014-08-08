@@ -3,8 +3,9 @@ require_once 'bootstrap.php';
 $posted = Session::read('posted');
 if (is_null($posted)) return header('Location: index.php#section-entry');
 foreach ($posted as $key => $val) {
-¦       if ($key === 'x' or $key === 'y') continue; // input img value. Don't need for entry
-¦       if (empty($val)) return header('Location: index.php#section-entry');
+	if ($key === 'x' or $key === 'y') continue; // input img value. Don't need for entry
+	if (empty($val)) return header('Location: index.php#section-entry');
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -30,6 +31,7 @@ foreach ($posted as $key => $val) {
 
   <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -39,14 +41,14 @@ foreach ($posted as $key => $val) {
     <div class="container">
 		<div class="header">
 			<div class="logo">
-				<a href="#section-header"><img src="images/git_logo.png" alt="git logo" class="pull-left"></a>	
+				<a href="index.php#section-header"><img src="images/git_logo.png" alt="git logo" class="pull-left"></a>	
 			</div>
 			
 			<ul class="nav nav-pills pull-right nav-links">
-				 <li><a href="#section-about">About</a></li>
-				 <li><a href="#section-program">Program</a></li>
-				 <li><a href="#section-info">Info</a></li>
-				 <li><a href="#section-entry">Entry</a></li>
+				 <li><a href="index.php#section-about">About</a></li>
+				 <li><a href="index.php#section-program">Program</a></li>
+				 <li><a href="index.php#section-info">Info</a></li>
+				 <li><a href="index.php#section-entry">Entry</a></li>
 			</ul>
 		</div>
 
@@ -54,6 +56,7 @@ foreach ($posted as $key => $val) {
 </div>
 
 <!-- CONTENT -->	
+
 <div class="main section-padding">
 	<div class="container">
 		<h1>以下の内容でよろしければ、<br/>
@@ -61,68 +64,59 @@ foreach ($posted as $key => $val) {
 
 		
 		<div class="row">
-			<div class="col-xs-6">
-				
+			<div class="col-md-6">
 				
 				<label>氏名(Name)</label>	
-				<div class="info">Jack Daniels</div>	
+				<div class="info"><?php echo __(Arr::get($posted, 'name')); ?></div>	
 				
 				<label>大学名(University)</label>	
-				<div class="info">Waseda University</div>	
+				<div class="info"><?php echo __(Arr::get($posted, 'university'))?></div>	
 			
 				<label>学部、学科(Majoring)</label>	
-				<div class="info">Computer Science</div>	
+				<div class="info"><?php echo __(Arr::get($posted, 'faculty'))?></div>	
 			
 				<label>卒業予定年度(Graduate in)</label>	
-				<div class="info">2013</div>	
+				<div class="info"><?php echo $graduating[Arr::get($posted, 'graduating')]; ?></div>	
 
-			
 			</div>
-			
-			
-			<div class="col-xs-6">
-				
+						
+			<div class="col-md-6">	
 				<label>性別(Sex)</label>	
-				<div class="info">男性(Male)</div>	
+				<div class="info"><?php echo $sex[Arr::get($posted, 'sex')]; ?></div>	
 			
 				<label>役割(Role)</label>	
-				<div class="info">Hacker</div>	
+				<div class="info"><?php echo $role[Arr::get($posted, 'role')]; ?></div>	
 
 				<label>電話番号(Phone number)</label>	
-				<div class="info">123 - 4566 - 8888</div>	
+				<div class="info"><?php echo __(Arr::get($posted, 'phone')); ?></div>	
 
 				<label>メールアドレス(email)</label>	
-				<div class="info">jack@sparrow.com</div>	
+				<div class="info"><?php echo __(Arr::get($posted, 'mail')); ?></div>	
 				
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-md-12">
 				
 				<div class="space20"></div>
 				
 				<label>実績や意気込み/Experiences, enthusiasm</label>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer justo lacus, rhoncus eu euismod a, ultricies sed ipsum. 
-					Suspendisse luctus at risus et lobortis. Fusce quis sapien ac elit rhoncus varius. Suspendisse iaculis vel ipsum at volutpat. 
-					Nunc consectetur cursus leo, et porta orci congue non. Maecenas libero dui, ullamcorper sed justo tempus, sagittis eleifend nunc. 
-					Fusce tincidunt sagittis magna, in feugiat orci porttitor non. Integer urna quam, sollicitudin ut dignissim eget, laoreet ut ipsum. Nullam malesuada gravida tellus,
-					in porta lacus gravida id. Integer iaculis erat vel erat luctus, in commodo nisl rhoncus. Vivamus lacinia augue urna, non vehicula felis sollicitudin ut.
-					Nulla at eros gravida neque imperdiet elementum. Suspendisse vestibulum eu arcu a placerat. Morbi lectus metus, volutpat vulputate volutpat sodales, lobortis nec lectus.
-				</p>
+				<p><?php echo __(Arr::get($posted, 'enthusiasm')); ?></p>
 		
 			</div>
 		</div>
 		
-		
-		
 		<div class="row center">
 			<div class="col-md-12">
-				<div class="space100"></div>
-		
-				<a href="#" class="button-normal">修正する</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="button-primary">送信する</a>
-		
+				<div class="space50"></div>
+				<form action="index.php#section-entry" method="post">
+				   <input type="submit" value="修正する" class="button-normal submit_button"></input>
+				</form>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<form action="complete-entry.php" method="post">
+				   <input type="submit" value="送信する" class="button-primary submit_button"></input>
+				</form>
 				<div class="space100"></div>
 				<div class="space100"></div>
 			</div>
@@ -131,8 +125,6 @@ foreach ($posted as $key => $val) {
 		
 	</div>
 </div>
-
-
 
 
 <footer id="footer" class="reset">

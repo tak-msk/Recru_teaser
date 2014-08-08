@@ -29,4 +29,3 @@ $role = array(
     'DESIGNER' => 'Designer',
 );
 
-?>

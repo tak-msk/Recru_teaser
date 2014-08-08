@@ -1,0 +1,90 @@
+/* css for confirm, complete, privacy page*/
+
+/* MAIN */
+.main{
+    margin: 0 auto;
+    padding: 100px 0 0 0;
+
+    text-align: left;
+}
+
+
+.main .container {
+	margin: 0 auto;
+	padding: 0;
+	width: 800px;
+	
+}
+
+.main h1 {
+
+	line-height: 50px;
+	
+	text-align: center;
+}
+
+
+.main label {
+	font-size: 12px;
+	color: #a7a9ac;
+
+}
+
+
+.main .info {
+	margin: 0;
+	padding: 0 0 20px 0;
+	
+	font-size: 18px;
+	color: #000000;
+
+}
+
+
+.space20 {
+	displau: block;
+	height: 20px;
+
+}
+
+.space50 {
+	displau: block;
+	height: 50px;
+}
+
+.space100 {
+	displau: block;
+	height: 100px;
+}
+
+
+/* PRIVACY POLICY */
+.main ol {
+	margin: 0 0 0 20px;
+	padding: 0;
+}
+
+
+.main ol li {
+	margin: 0;
+	padding: 0 0 20px 0;
+
+}
+
+.main ol li h4 {
+	margin: 0;
+	padding: 0;
+	
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.main ul li {
+	margin: 0;
+	padding: 0;
+
+}
+
+.main form {
+	display:inline-block;
+}
