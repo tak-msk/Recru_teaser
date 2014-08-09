@@ -243,35 +243,24 @@ if (! is_array($posted)) $posted = array($posted);
 <!-- INFORMATION -->	
 <div id="section-info" class=" section-padding">
     <div class="container">
-
 		<h1>INFORMATION</h1>
-		
-		
 		<!-- SCHEDULE -->
 		<div class="sub-section">
 			<h3>Schedule</h3>
-	
 			<div class="row arrow-bg">
-            
 				<br/>
 				<div class="col-xs-3">
 					<img src="images/schedule_1.png" alt="entry">
-					
 					<h4>Entry</h4>
 				</div>
-				
 				<div class="col-xs-3">
 					<img src="images/schedule_2.png" alt="screening">
-					
 					<h4>Screening</h4>
 				</div>
-				
 				<div class="col-xs-3">
 					<img src="images/schedule_3.png" alt="techa">
-					
 					<h4>TECHA</h4>
 				</div>
-				
 				<div class="col-xs-3">
 					<img src="images/schedule_4.png" alt="complete">
 					<h4>Complete</h4>
@@ -329,7 +318,6 @@ if (! is_array($posted)) $posted = array($posted);
 			<div class="col-md-6">
 				<div class="sub-section">
 					<h3>Goal</h3>
-					
 					<p>
 						鉄火-TECHAでのゴールは、開発するプロダクトがいかに「日本の就活文化に革新を起こす」か徹底的に追求してプロダクトを開発し、それを事業化することです。  
  					</p>
@@ -384,9 +372,9 @@ if (! is_array($posted)) $posted = array($posted);
 				
 				<?php $chose = Arr::get($posted, 'role');?>
 				<p>
-					<input type="radio" id="role1" name="role" value="HACKER" <?php echo ($chose === 'HACKER')? "chose": null; ?>><label for="role1">Hacker</label>
-					<input type="radio" id="role2" name="role" value="DIRECTOR" <?php echo ($chose === 'DIRECTOR')? "chose": null; ?>><label for="role2">Director</label>
-					<input type="radio" id="role3" name="role" value="DESIGNER" <?php echo ($chose === 'DESIGNER')? "chose": null; ?>><label for="role3">Designer</label>
+					<input type="radio" id="role1" name="role" value="HACKER" <?php echo ($chose === 'HACKER')? "checked": null; ?>><label for="role1">Hacker</label>
+					<input type="radio" id="role2" name="role" value="DIRECTOR" <?php echo ($chose === 'DIRECTOR')? "checked": null; ?>><label for="role2">Director</label>
+					<input type="radio" id="role3" name="role" value="DESIGNER" <?php echo ($chose === 'DESIGNER')? "checked": null; ?>><label for="role3">Designer</label>
 				</p>
 
 				<?php $checked = Arr::get($posted, 'sex');?>
@@ -405,7 +393,7 @@ if (! is_array($posted)) $posted = array($posted);
 		
 		
 			<div class="col-md-6">
-			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)" wrap="hard"></textarea>
+			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)" wrap="hard" id="enthusiasm"></textarea>
 			</div>
 		</div>
 		
@@ -430,7 +418,6 @@ if (! is_array($posted)) $posted = array($posted);
 	</form>
     </div>
 </div>	  
-
 
 <footer id="footer" class="reset">
 	<small>&copy; givery Technology, 2014</small>
