@@ -63,7 +63,6 @@ foreach ($posted as $key => $val) {
 	<div class="container">
 		<h1>以下の内容でよろしければ、<br/>
 		「送信する」ボタンを押してください</h1>
-
 		
 		<div class="row">
 			<div class="col-md-6">

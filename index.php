@@ -53,7 +53,6 @@ if (! is_array($posted)) $posted = array($posted);
 </div>
 
 <div class="wrapper">
-
 <!-- HEADER -->
 <div id="section-header" class="section-padding">
 	<div class="container">
@@ -76,8 +75,34 @@ if (! is_array($posted)) $posted = array($posted);
 				<br />
 				<a href="#section-entry" class="button-primary">Entry</a>
 			</div>
-			<div class="col-xs-2" >		
-				<table>
+			<div class="col-xs-2" >	
+			<section id="entry">
+				<div class="accepting">
+				   <div class="deadline">
+				      <span class="deadline-letter time">Deadline</span><br/>
+				      <span class="datetime time"></span><br/>
+				      <table class="time-labels" align="right">
+					 <tbody>
+					    <tr>
+					       <td>Days</td>
+					       <td></td>
+					       <td></td>
+					       <td></td>
+					       <td>Hrs</td>
+					       <td></td>
+					       <td></td>
+					       <td>Mins</td>
+					       <td></td>
+					       <td></td>
+					       <td>Secs</td>
+					    </td>
+					 </tbody>
+				      </table>
+				   </div>
+				</div>
+				<!--<div class="closed time"></div>-->
+			</section>
+			<!--	<table>
 					<tbody>
 						<tr class="time">
 							<td>42</td>
@@ -98,7 +123,7 @@ if (! is_array($posted)) $posted = array($posted);
 							<td>Secs</td>
 						</tr>
 					</tbody>
-				</table>
+				</table>-->
 				<br />
 				<div class="social-buttons">
 				   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://givery.co.jp/internship" data-text="test!!!!!!!!!" data-lang="ja" data-hashtags="TECHα">ツイート</a>
@@ -393,7 +418,7 @@ if (! is_array($posted)) $posted = array($posted);
 		
 		
 			<div class="col-md-6">
-			   <textarea name="enthusiasm" cols="70" rows="17" value="<?php echo __(Arr::get($posted, 'enthusiasm')); ?>" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)" wrap="hard" id="enthusiasm"></textarea>
+			   <textarea name="enthusiasm" cols="70" rows="17" placeholder="実績や意気込み(400字以内)/Experiences, enthusiasm(400char)" wrap="hard" id="enthusiasm"><?php echo __(Arr::get($posted, 'enthusiasm')); ?></textarea>
 			</div>
 		</div>
 		
@@ -405,7 +430,7 @@ if (! is_array($posted)) $posted = array($posted);
 			<a href="privacy_policy.php">「株式会社ギブリーの個人情報に関する取扱いについて」</a>をご参照ください。
 			<br />
 			<br />
-			<input type="checkbox" id="checkme" name="privacy" value="同意する">  個人情報に関する取扱いについて同意する
+			<input type="checkbox" id="checkme" name="privacy" value="同意する">  個人情報に関する取扱いについて同意する</input>
 			<br />
 			<br />
 			</p>

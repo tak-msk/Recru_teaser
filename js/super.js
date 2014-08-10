@@ -108,18 +108,11 @@
       remainingMin = Math.floor(remaining % day % hour / min);
       remainingSec = Math.floor(remaining % day % hour % min / sec);
 
-      if (remainingDay > 1) {
-        remainingText = remainingDay + 'days ';
-      }
-      else if (remainingDay === 1) {
-        remainingText = remainingDay + 'day ';
-      }
-
-      remainingText
-        = remainingText
-        + _setZeroPadding(remainingHour) + 'h'
-        + _setZeroPadding(remainingMin) + 'm'
-        + _setZeroPadding(remainingSec) + 's';
+      remainingText =
+        + remainingDay + ':'
+        + _setZeroPadding(remainingHour) + ':'
+        + _setZeroPadding(remainingMin) + ':'
+        + _setZeroPadding(remainingSec);
 
       _$datetime.html(remainingText);
 
