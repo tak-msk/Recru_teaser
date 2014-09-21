@@ -5,6 +5,12 @@ function is_valid_email ($mail)
 {
     return filter_var($mail, FILTER_VALIDATE_EMAIL) && (! preg_match('/@\[[^\]]++\]\z/', $mail));
 }
+
+// convert Zenkaku to Hankaku
+$mail = mb_convert_kana(Arr::get($_POST, 'mail'), 'a', 'UTF-8');
+Arr::set($_POST, 'mail', $mail);
+Session::write('posted', $_POST);
+
 $required = array(
     'mail' => 'メールアドレスを入力してください',
 );
@@ -21,6 +27,7 @@ foreach ($required as $key => $errmsg) {
 if ((! isset($failed['mail'])) and (! is_valid_email($mail))) {
     $failed['mail'] = 'メールの形式に誤りがあるか、既に登録されています';
 }
+
 
 /** メールの重複チェック. DB登録がある場合はコメントアウトして下さい.
 if (! isset($failed['mail'])) {
@@ -46,3 +53,4 @@ if (! empty($failed)) {
 }
 
 return header('Location: send_mail.php');
+?>
