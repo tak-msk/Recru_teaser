@@ -5,40 +5,8 @@ function is_valid_email ($mail)
 {
     return filter_var($mail, FILTER_VALIDATE_EMAIL) && (! preg_match('/@\[[^\]]++\]\z/', $mail));
 }
-// simple phone validation method
-function is_valid_phone ($phone)
-{
-    // 13 as a maximum phone length include dash
-    $phonelen = mb_strlen($phone, 'UTF-8');
-    return $phonelen === 10 or $phonelen === 11;
-}
-
-// simple enthusiasm validation method
-function is_valid_enthusiasm ($enthusiasm)
-{
-    // max is 400 chars
-    $charlen = mb_strlen($enthusiasm, 'UTF-8');
-    return $charlen <= 400;
-}
-
-// convert Zenkaku to Hankaku
-$phone = mb_convert_kana(Arr::get($_POST, 'phone'), 'a', 'UTF-8');
-$phone = preg_replace('/\D/', '', $phone);
-Arr::set($_POST, 'phone', $phone);
-$mail = mb_convert_kana(Arr::get($_POST, 'mail'), 'a', 'UTF-8');
-Arr::set($_POST, 'mail', $mail);
-Session::write('posted', $_POST);
-
 $required = array(
-    'name' => '氏名を入力してください',
-    'university' => '大学名を入力してください',
-    'faculty' => '学部、学科を入力してください',
-    'graduating' => '卒業予定年度を入力してください',
-    'phone' => '電話番号を入力してください',
     'mail' => 'メールアドレスを入力してください',
-    'role' => '役割を入力してください',
-    'sex' => '性別を入力してください',
-    'enthusiasm' => '意気込みを入力してください',
 );
 $failed = array();
 
@@ -50,19 +18,8 @@ foreach ($required as $key => $errmsg) {
     if ($val === "") $failed[$key] = $errmsg;
 }
 
-// 電話番号の扱いをどうするか？
-if ((! isset($failed['phone'])) and (! is_valid_phone($phone))) {
-    $failed['phone'] = '電話番号として不正な値です。もう一度ご確認ください';
-}
-
-// email too
 if ((! isset($failed['mail'])) and (! is_valid_email($mail))) {
     $failed['mail'] = 'メールの形式に誤りがあるか、既に登録されています';
-}
-
-// # of characters on an enthusiam is 400
-if (! is_valid_enthusiasm(Arr::get($_POST,'enthusiasm'))){
-    $failed['enthusiasm'] = '400字以内で提出してください。';
 }
 
 /** メールの重複チェック. DB登録がある場合はコメントアウトして下さい.
@@ -85,7 +42,7 @@ if (! isset($failed['mail'])) {
 
 if (! empty($failed)) {
     Session::write('failed', $failed);
-    return header('Location: index.php#entry');
+    return header('Location: index.php');
 }
 
-return header('Location: confirm.php');
+return header('Location: send_mail.php');
