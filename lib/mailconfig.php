@@ -9,8 +9,8 @@ class Mailconfig
 		);
 	public static $bcc = array(
 		);
-	public static $from = 'no-reply@bellpark.co.jp';
-	public static $fromname = 'Bellpark Internship';
+	public static $from = 'no-reply@recru.co.jp';
+	public static $fromname = 'RECRU UserSupport';
 	public static $charset = 'UTF-8';
 
 }
